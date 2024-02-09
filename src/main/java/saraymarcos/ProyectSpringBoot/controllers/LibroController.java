@@ -4,8 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import saraymarcos.ProyectSpringBoot.dtos.LibroRequestDto;
 import saraymarcos.ProyectSpringBoot.dtos.LibroResponseDto;
 import saraymarcos.ProyectSpringBoot.mappers.LibroMapper;
+import saraymarcos.ProyectSpringBoot.models.Libro;
 import saraymarcos.ProyectSpringBoot.services.LibroService;
 
 import java.util.List;
@@ -95,6 +97,30 @@ public class LibroController {
         );
     }
 */
+
+    @PostMapping
+    public ResponseEntity<LibroResponseDto> postLibro(
+            @RequestBody LibroRequestDto libroRequestDto
+    ) {
+        log.info("addLibro");
+        Libro libroSaved = libroService.save(libroMapper.toModel(libroRequestDto));
+        return ResponseEntity.created(null).body(
+                libroMapper.toResponse(libroSaved)
+        );
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<LibroResponseDto> putLibro(
+            @PathVariable Long id,
+            @RequestBody LibroRequestDto libroRequestDto
+    ) {
+        log.info("putLibro");
+        Libro libroUpdated = libroService.update(id, libroMapper.toModel(libroRequestDto));
+        return ResponseEntity.ok(
+                libroMapper.toResponse(libroUpdated)
+        );
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<LibroResponseDto> deleteProduct(
             @PathVariable Long id

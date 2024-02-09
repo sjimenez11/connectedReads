@@ -10,7 +10,7 @@ public interface LibroService{
 
     List<Libro> findAll();
     Libro findById(Long id);
-    Libro findByUuid(UUID uuuuid);
+    Libro findByUuid(UUID uuid);
     Libro findLibroByISBN(Long ISBN);
     List<Libro> findLibrosByGenero(String genero);
     List<Libro> findLibrosByTitulo(String titulo);
