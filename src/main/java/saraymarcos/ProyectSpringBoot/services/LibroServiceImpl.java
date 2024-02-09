@@ -37,8 +37,8 @@ public class LibroServiceImpl implements LibroService{
     }
 
     @Override
-    public Libro findLibroByISBN(String ISBN) {
-        return libroRepository.findLibroByISBN(ISBN);
+    public Libro findLibrosByISBN(String ISBN) {
+        return libroRepository.findLibrosByISBNContainsIgnoreCase(ISBN);
     }
 
 
@@ -49,8 +49,7 @@ public class LibroServiceImpl implements LibroService{
 
     @Override
     public List<Libro> findLibrosByTitulo(String titulo) {
-        return null;
-        //return libroRepository.findLibrosByTituloContainsIgnoreCase(titulo);
+        return libroRepository.findLibrosByTituloContainsIgnoreCase(titulo);
     }
 
     @Override
