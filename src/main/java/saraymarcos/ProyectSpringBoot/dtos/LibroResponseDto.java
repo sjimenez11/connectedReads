@@ -11,7 +11,7 @@ import java.util.UUID;
 public class LibroResponseDto {
     private Long id;
     private UUID uuid;
-    private Long ISBN;
+    private String ISBN;
     private String titulo;
     private String autor;
     private Double precio;

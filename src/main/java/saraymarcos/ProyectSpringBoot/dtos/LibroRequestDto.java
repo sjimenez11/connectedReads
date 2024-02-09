@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class LibroRequestDto {
-    private final Long ISBN;
+    private final String ISBN;
     private final String titulo;
     private final String autor;
     private final Double precio;

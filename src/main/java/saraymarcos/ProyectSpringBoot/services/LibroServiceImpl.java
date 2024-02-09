@@ -37,7 +37,7 @@ public class LibroServiceImpl implements LibroService{
     }
 
     @Override
-    public Libro findLibroByISBN(Long ISBN) {
+    public Libro findLibroByISBN(String ISBN) {
         return libroRepository.findLibroByISBN(ISBN);
     }
 

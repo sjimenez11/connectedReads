@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface LibroRepository extends JpaRepository<Libro, Long> {
     Optional<Libro> findLibroByUuid(UUID uuid);
-    Libro findLibroByISBN(Long ISBN);
+    Libro findLibroByISBN(String ISBN);
     List<Libro> findLibrosByGeneroContainsIgnoreCase(String genero);
     List<Libro> findLibrosByTituloContainsIgnoreCase(String titulo);
     List<Libro> findLibrosByAutorContainsIgnoreCase(String autor);
