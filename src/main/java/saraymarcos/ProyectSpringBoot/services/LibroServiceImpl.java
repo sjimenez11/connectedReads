@@ -49,7 +49,8 @@ public class LibroServiceImpl implements LibroService{
 
     @Override
     public List<Libro> findLibrosByTitulo(String titulo) {
-        return libroRepository.findLibrosByTituloContainsIgnoreCase(titulo);
+        return null;
+        //return libroRepository.findLibrosByTituloContainsIgnoreCase(titulo);
     }
 
     @Override

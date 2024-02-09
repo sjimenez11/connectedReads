@@ -86,7 +86,7 @@ public class LibroController {
         );
 
     }
-
+/*
     @GetMapping("/{ISBN}")
     public ResponseEntity<LibroResponseDto> getLibroByISBN(
             @PathVariable String ISBN
@@ -96,7 +96,7 @@ public class LibroController {
         return ResponseEntity.ok(libroMapper.toResponse(libroService.findLibroByISBN(ISBN))
         );
     }
-
+*/
     @PostMapping
     public ResponseEntity<LibroResponseDto> postLibro(
             @RequestBody LibroRequestDto libroRequestDto
