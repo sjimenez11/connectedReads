@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/libros")
+@RequestMapping("/connectedReads/libros")
 @Slf4j
 public class LibroController {
     private final LibroService libroService;
@@ -36,7 +36,7 @@ public class LibroController {
         );
     }
 
-    @GetMapping("/by-genero/{genero}")
+    @GetMapping("/genero/{genero}")
     public ResponseEntity<List<LibroResponseDto>> getLibrosByGenero(
             @PathVariable String genero
     ) {
@@ -46,7 +46,7 @@ public class LibroController {
         );
     }
 
-    @GetMapping("/by-titulo/{titulo}")
+    @GetMapping("/titulo/{titulo}")
     public ResponseEntity<List<LibroResponseDto>> getLibrosByTitulo(
             @PathVariable String titulo
     ) {
@@ -56,7 +56,7 @@ public class LibroController {
         );
     }
 
-    @GetMapping("/by-autor/{autor}")
+    @GetMapping("/autor/{autor}")
     public ResponseEntity<List<LibroResponseDto>> getLibrosByAutor(
             @PathVariable String autor
     ) {
@@ -66,7 +66,7 @@ public class LibroController {
         );
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("id/{id}")
     public ResponseEntity<LibroResponseDto> getLibroById(
             @PathVariable Long id
     ) {
@@ -76,7 +76,7 @@ public class LibroController {
         );
     }
 
-    @GetMapping("/find/{uuid}")
+    @GetMapping("/uuid/{uuid}")
     public ResponseEntity<LibroResponseDto> getLibroByUuid(
             @PathVariable UUID uuid
     ) {
@@ -87,7 +87,7 @@ public class LibroController {
 
     }
 
-    @GetMapping("/by-ISBN/{ISBN}")
+    @GetMapping("/ISBN/{ISBN}")
     public ResponseEntity<LibroResponseDto> getLibroByISBN(
             @PathVariable String ISBN
     ) {
@@ -97,7 +97,7 @@ public class LibroController {
         );
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<LibroResponseDto> postLibro(
             @RequestBody LibroRequestDto libroRequestDto
     ) {
@@ -108,7 +108,7 @@ public class LibroController {
         );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<LibroResponseDto> putLibro(
             @PathVariable Long id,
             @RequestBody LibroRequestDto libroRequestDto
@@ -120,7 +120,7 @@ public class LibroController {
         );
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<LibroResponseDto> deleteProduct(
             @PathVariable Long id
     ) {

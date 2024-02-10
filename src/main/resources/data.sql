@@ -6,5 +6,3 @@ VALUES(uuid(), 8419266280, 'Babel', 'Rebecca F. Kuang', 20.90, 'Narrativa fantá
 
 INSERT INTO libro (uuid, ISBN, titulo, autor, precio, genero, sinopsis, stock, created_at, updated_at)
 VALUES(uuid(), 8419266906, 'La guerra de la amapola', 'Rebecca F. Kuang', 22.80, 'Narrativa fantástica', 'Que Rin superase el Keju (una prueba para encontrar a los jóvenes con más talento del imperio) sorprendió a todo el mundo: a los oficiales que realizaron la prueba, que no podían creer que una huérfana...', 45, NOW()-2, NOW()-1);
-
-
