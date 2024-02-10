@@ -1,0 +1,663 @@
+{
+	"info": {
+		"_postman_id": "6c302c1b-8788-4b63-8f48-5e384fc3f2e4",
+		"name": "ProyectoSpringBoot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32882081"
+	},
+	"item": [
+		{
+			"name": "Libros",
+			"item": [
+				{
+					"name": "Get all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ISBN\": 9999999999,\n    \"titulo\": \"Me muero\",\n    \"autor\": \"me requetemuero\",\n    \"precio\": 99,\n    \"genero\": \"morirse\",\n    \"sinopsis\": \"como que te mueres\",\n    \"stock\": 99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"create"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"titulo\": \"Babel, o la necesidad de la violencia\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/update/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"update",
+								"{{id}}"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/delete/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"delete",
+								"{{id}}"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwNzc3Nzc1NX0.dn4cZKNOb145cuK4vRFXe-FdiRS5ElEeCWghmv1v8si5XI9OP2BI4_zXL_Xwqyf7NLHdedlxjKD9gVs8oEiaWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/id/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"id",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Uuid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/uuid{{uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"uuid{{uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by ISBN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/ISBN/8419266906",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"ISBN",
+								"8419266906"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Autor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/autor/Rebeca F. Kuang",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"autor",
+								"Rebeca F. Kuang"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Titulo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/titulo/Babel",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"titulo",
+								"Babel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Genero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/genero/Narrativa Fantástica",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"genero",
+								"Narrativa Fantástica"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@connectedReads.com\",\r\n    \"password\":\"admin1\",\r\n    \"role\": \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"user@connectedReads.com\",\n    \"password\": \"user1\",\n    \"repeatPassword\": \"user1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"register"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@connectedReads.com\",\r\n    \"password\":\"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwNzc3Nzc1NX0.dn4cZKNOb145cuK4vRFXe-FdiRS5ElEeCWghmv1v8si5XI9OP2BI4_zXL_Xwqyf7NLHdedlxjKD9gVs8oEiaWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/id/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"id",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwNzc3Nzc1NX0.dn4cZKNOb145cuK4vRFXe-FdiRS5ElEeCWghmv1v8si5XI9OP2BI4_zXL_Xwqyf7NLHdedlxjKD9gVs8oEiaWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/email/admin@connectedReads.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"email",
+								"admin@connectedReads.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDc3ODA3NDZ9.a3cytm6w9Y1qZm358LlgIBBZ-BWEmh9qy9cDr1ZrqcF1xqPE3J3dM1EAjWZmc_rrlGWG8JITbSnLYYnocxzi-g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"user@connectedReads.com\",\n    \"password\": \"user1\",\n    \"newPassword\": \"user1Updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update my self",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDc3ODAyNDB9.dFmiLU7mh9tysGQRHH0KBJSIfPTcu89LoeVvUihwJzP_H7vMYGvcUqcIEaz9PtTL2Dt39Wn5C8cqdRxl-33R3A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"user@connectedReads.com\",\n    \"password\": \"user1Updated\",\n    \"newPassword\": \"user1UpdatedMySelf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/update/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"update",
+								"me"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/libros/delete{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"libros",
+								"delete{{id}}"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
