@@ -7,7 +7,7 @@ import java.util.List;
 public interface ReadingGroupService {
     List<ReadingGroup> findAll();
     ReadingGroup findById(Long id);
-    List<ReadingGroup> findGruposLecturaByNombre(String name);
+    List<ReadingGroup> findReadingGroupsByName(String name);
     //TODO: findGrupoByCreador
     void deleteById(Long id);
     ReadingGroup save(ReadingGroup readingGroup);

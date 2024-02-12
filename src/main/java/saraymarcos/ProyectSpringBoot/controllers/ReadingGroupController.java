@@ -24,21 +24,21 @@ public class ReadingGroupController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<ReadingGroupResponseDto>> getAllGruposLectura(){
+    public ResponseEntity<List<ReadingGroupResponseDto>> getAllReadingGroups(){
         return ResponseEntity.ok(
                 readingGroupMapper.toResponse(readingGroupService.findAll())
         );
     }
 
     @GetMapping("/by-nombre/{name}")
-    public ResponseEntity<List<ReadingGroupResponseDto>> getGruposLecturaByNombre(
+    public ResponseEntity<List<ReadingGroupResponseDto>> getReadingGroupsByName(
             @PathVariable String name
     ){
-        return ResponseEntity.ok(readingGroupMapper.toResponse(readingGroupService.findGruposLecturaByNombre(name)));
+        return ResponseEntity.ok(readingGroupMapper.toResponse(readingGroupService.findReadingGroupsByName(name)));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ReadingGroupResponseDto> postGrupoLectura(
+    public ResponseEntity<ReadingGroupResponseDto> postReadingGroup(
             @RequestBody ReadingGroupRequestDto readingGroupRequestDto
     ){
         ReadingGroup readingGroupSaved = readingGroupService.save(readingGroupMapper.toModel(readingGroupRequestDto));
@@ -48,7 +48,7 @@ public class ReadingGroupController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ReadingGroupResponseDto> putGrupoLectura(
+    public ResponseEntity<ReadingGroupResponseDto> putReadingGroup(
             @PathVariable Long id,
             @RequestBody ReadingGroupRequestDto readingGroupRequestDto
     ){
@@ -59,7 +59,7 @@ public class ReadingGroupController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ReadingGroupResponseDto> deleteGrupoLectura(
+    public ResponseEntity<ReadingGroupResponseDto> deleteReadingGroup(
             @PathVariable Long id
     ){
         readingGroupService.deleteById(id);

@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface ReadingGroupRepository extends JpaRepository<ReadingGroup, Long> {
-    List<ReadingGroup> findGrupoByNombre(String nombre);
-    List<ReadingGroup> findGrupoByGenero(String genero);
+    List<ReadingGroup> findReadingGroupByName(String name);
+    List<ReadingGroup> findReadingGroupByGenre(String genre);
 }
