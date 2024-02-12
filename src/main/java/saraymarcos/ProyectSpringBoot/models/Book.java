@@ -8,24 +8,22 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Libro {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private UUID uuid;
-    private String ISBN;
-    private String titulo;
-    private String autor;
-    private Double precio;
+    private String isbn;
+    private String title;
+    private String author;
+    private Double price;
     //portada
-    private String genero;
-    private String sinopsis;
+    private String genre;
+    private String synopsis;
     private Long stock;
     @CreatedDate
     private LocalDateTime createdAt;

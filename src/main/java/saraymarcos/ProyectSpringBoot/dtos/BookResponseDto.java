@@ -8,16 +8,15 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class LibroResponseDto {
+public class BookResponseDto {
     private Long id;
-    private UUID uuid;
-    private String ISBN;
-    private String titulo;
-    private String autor;
-    private Double precio;
+    private String isbn;
+    private String title;
+    private String author;
+    private Double price;
     //portada
-    private String genero;
-    private String sinopsis;
+    private String genre;
+    private String synopsis;
     private Long stock;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
