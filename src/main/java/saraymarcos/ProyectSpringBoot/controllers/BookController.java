@@ -33,7 +33,7 @@ public class BookController {
         );
     }
 
-    @GetMapping("/by-genre/{genre}")
+    @GetMapping("/genre/{genre}")
     public ResponseEntity<List<BookResponseDto>> getBooksByGenre(
             @PathVariable String genre
     ) {
@@ -43,7 +43,7 @@ public class BookController {
         );
     }
 
-    @GetMapping("/by-title/{title}")
+    @GetMapping("/title/{title}")
     public ResponseEntity<List<BookResponseDto>> getBooksByTitle(
             @PathVariable String title
     ) {
@@ -53,7 +53,7 @@ public class BookController {
         );
     }
 
-    @GetMapping("/by-author/{author}")
+    @GetMapping("/author/{author}")
     public ResponseEntity<List<BookResponseDto>> getBooksByAuthor(
             @PathVariable String author
     ) {
@@ -63,7 +63,7 @@ public class BookController {
         );
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("id/{id}")
     public ResponseEntity<BookResponseDto> getBookById(
             @PathVariable Long id
     ) {
