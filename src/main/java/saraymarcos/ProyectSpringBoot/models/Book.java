@@ -29,4 +29,5 @@ public class Book {
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
 }

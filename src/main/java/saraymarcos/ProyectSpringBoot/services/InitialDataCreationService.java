@@ -4,6 +4,7 @@ package saraymarcos.ProyectSpringBoot.services;
 import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
+import saraymarcos.ProyectSpringBoot.dtos.user.UserDtoCreate;
 import saraymarcos.ProyectSpringBoot.models.Book;
 import saraymarcos.ProyectSpringBoot.models.Role;
 import saraymarcos.ProyectSpringBoot.models.User;
@@ -19,8 +20,8 @@ public class InitialDataCreationService {
     private final Faker faker = new Faker(new Locale("en-US"));
 
     public void createDefaultAdminUser(){
-        User user = new User(null, "user", "user", Role.ADMIN);
-        userService.save(user);
+        UserDtoCreate user = new UserDtoCreate("user", "user", Role.ADMIN);
+        userService.create(user);
     }
 
     public void createFakeBooks(int number){
