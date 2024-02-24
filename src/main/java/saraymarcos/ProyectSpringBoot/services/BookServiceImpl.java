@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class BookServiceImpl implements BookService {
+  public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
 
