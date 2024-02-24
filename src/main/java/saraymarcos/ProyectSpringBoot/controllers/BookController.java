@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import saraymarcos.ProyectSpringBoot.dtos.book.BookRequestDto;
-import saraymarcos.ProyectSpringBoot.dtos.book.BookResponseDto;
+import saraymarcos.ProyectSpringBoot.dtos.BookRequestDto;
+import saraymarcos.ProyectSpringBoot.dtos.BookResponseDto;
 import saraymarcos.ProyectSpringBoot.mappers.BookMapper;
 import saraymarcos.ProyectSpringBoot.models.Book;
-import saraymarcos.ProyectSpringBoot.services.book.BookService;
+import saraymarcos.ProyectSpringBoot.services.BookService;
 
 import java.util.List;
 

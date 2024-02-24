@@ -4,11 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import saraymarcos.ProyectSpringBoot.dtos.readingGroup.ReadingGroupRequestDto;
-import saraymarcos.ProyectSpringBoot.dtos.readingGroup.ReadingGroupResponseDto;
+import saraymarcos.ProyectSpringBoot.dtos.ReadingGroupRequestDto;
+import saraymarcos.ProyectSpringBoot.dtos.ReadingGroupResponseDto;
 import saraymarcos.ProyectSpringBoot.mappers.ReadingGroupMapper;
 import saraymarcos.ProyectSpringBoot.models.ReadingGroup;
-import saraymarcos.ProyectSpringBoot.services.readingGroup.ReadingGroupService;
+import saraymarcos.ProyectSpringBoot.services.ReadingGroupService;
 
 import java.util.List;
 
