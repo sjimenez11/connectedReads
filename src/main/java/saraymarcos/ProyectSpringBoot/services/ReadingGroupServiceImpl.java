@@ -29,8 +29,8 @@ public class ReadingGroupServiceImpl implements ReadingGroupService {
     }
 
     @Override
-    public List<ReadingGroup> findGruposLecturaByNombre(String nombre) {
-        return readingGroupRepository.findGrupoByNombre(nombre);
+    public List<ReadingGroup> findReadingGroupsByName(String name) {
+        return readingGroupRepository.findGroupByName(name);
     }
 
     @Override
