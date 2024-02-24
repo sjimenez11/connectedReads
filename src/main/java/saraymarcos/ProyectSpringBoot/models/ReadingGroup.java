@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@Table(name = "_grupolectura")
+//al crear la base de datos, la tabla será en minúsculas y las mayúsculas de las clases serán representadas con un barrabaja (_)
+//reading_group
 public class ReadingGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

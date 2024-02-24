@@ -1,10 +1,12 @@
 package saraymarcos.ProyectSpringBoot.services;
 
+
 import saraymarcos.ProyectSpringBoot.models.Book;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface BookService {
+public interface BookService{
 
     List<Book> findAll();
     Book findById(Long id);
@@ -16,5 +18,5 @@ public interface BookService {
     void deleteById(Long id);
     Book save(Book book);
     Book update(Long id, Book book);
-    //List<Libro> findByStockLessThanEqual(Double lowStock);
+    //List<Book> findByStockLessThanEqual(Double lowStock);
 }
