@@ -77,8 +77,12 @@ public class SecurityConfiguration {
                                     // Reading Groups
                                         // GET
                                         "/connectedReads/readingGroups",
-                                        // POST, PUT and DELETE
+                                        "/connectedReads/readingGroups/id/{id}",
                                         "/connectedReads/readingGroups/name/{name}"
+                                        // POST, PUT and DELETE
+//                                        "/connectedReads/readingGroups/create",
+//                                        "/connectedReads/readingGroups/update/{id}",
+//                                        "/connectedReads/readingGroups/delete/{id}"
 
 
                                         ).hasAnyRole("USER", "ADMIN")
@@ -94,7 +98,14 @@ public class SecurityConfiguration {
                                         // POST, PUT and DELETE
                                         "/connectedReads/books/create",
                                         "/connectedReads/books/update/{id}",
-                                        "/connectedReads/books/delete/{id}"
+                                        "/connectedReads/books/delete/{id}",
+
+
+                                    //ReadingBooks
+                                        // POST, PUT and DELETE
+                                        "/connectedReads/readingGroups/create",
+                                        "/connectedReads/readingGroups/update/{id}",
+                                        "/connectedReads/readingGroups/delete/{id}"
                                 ).hasAnyRole("ADMIN")
 
                                 .anyRequest().authenticated()
