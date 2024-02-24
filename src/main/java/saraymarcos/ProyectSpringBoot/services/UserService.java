@@ -24,7 +24,6 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository repository;
     private final JwtTokenUtils tokenUtils;
-
     private final UserMapper mapper;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
@@ -93,6 +92,10 @@ public class UserService implements UserDetailsService {
         User user = repository.findById(id).orElseThrow(() -> new UserException.UserNotFoundException(
                 "User with ID " + id + " not found."));
         return mapper.toDto(user);
+    }
+
+    public User save(User user){
+        return repository.save(user);
     }
 
     public UserDto updateSelf(Long id, UserDtoUpdate dto) {
