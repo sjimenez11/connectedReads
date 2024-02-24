@@ -2,15 +2,13 @@ package saraymarcos.ProyectSpringBoot.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import saraymarcos.ProyectSpringBoot.dtos.BookRequestDto;
-import saraymarcos.ProyectSpringBoot.dtos.BookResponseDto;
+import saraymarcos.ProyectSpringBoot.dtos.book.BookRequestDto;
+import saraymarcos.ProyectSpringBoot.dtos.book.BookResponseDto;
 import saraymarcos.ProyectSpringBoot.mappers.BookMapper;
 import saraymarcos.ProyectSpringBoot.models.Book;
-import saraymarcos.ProyectSpringBoot.services.BookService;
-import saraymarcos.ProyectSpringBoot.services.BookServiceImpl;
+import saraymarcos.ProyectSpringBoot.services.book.BookService;
 
 import java.util.List;
 
@@ -27,10 +25,7 @@ public class BookController {
     public ResponseEntity<List<BookResponseDto>> getAllBooks(
     ) {
         log.info("getAllBooks");
-
-        return ResponseEntity.ok(
-                bookMapper.toResponse(bookService.findAll())
-        );
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findAll()));
     }
 
     @GetMapping("/genre/{genre}")
@@ -38,9 +33,7 @@ public class BookController {
             @PathVariable String genre
     ) {
         log.info("getBooksByGenre");
-
-        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByGenre(genre))
-        );
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByGenre(genre)));
     }
 
     @GetMapping("/title/{title}")
@@ -48,7 +41,6 @@ public class BookController {
             @PathVariable String title
     ) {
         log.info("getBooksByTitle");
-
         return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByTitle(title))
         );
     }
@@ -58,9 +50,7 @@ public class BookController {
             @PathVariable String author
     ) {
         log.info("getBooksByAuthor");
-
-        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByAuthor(author))
-        );
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByAuthor(author)));
     }
 
     @GetMapping("id/{id}")
@@ -68,9 +58,7 @@ public class BookController {
             @PathVariable Long id
     ) {
         log.info("getBookById");
-        return ResponseEntity.ok(
-                bookMapper.toResponse(bookService.findById(id))
-        );
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findById(id)));
     }
 /*
     @GetMapping("/find/{uuid}")
@@ -89,9 +77,7 @@ public class BookController {
             @PathVariable String isbn
     ) {
         log.info("getBookByISBN");
-
-        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBookByIsbn(isbn))
-        );
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBookByIsbn(isbn)));
     }
     @PostMapping("/create")
     public ResponseEntity<BookResponseDto> postBook(
@@ -99,9 +85,7 @@ public class BookController {
     ) {
         log.info("addBook");
         Book bookSaved = bookService.save(bookMapper.toModel(bookRequestDto));
-        return ResponseEntity.created(null).body(
-                bookMapper.toResponse(bookSaved)
-        );
+        return ResponseEntity.created(null).body(bookMapper.toResponse(bookSaved));
     }
 
     @PutMapping("update/{id}")
@@ -111,9 +95,7 @@ public class BookController {
     ) {
         log.info("putBook");
         Book bookUpdated = bookService.update(id, bookMapper.toModel(bookRequestDto));
-        return ResponseEntity.ok(
-                bookMapper.toResponse(bookUpdated)
-        );
+        return ResponseEntity.ok(bookMapper.toResponse(bookUpdated));
     }
 
     @DeleteMapping("delete/{id}")
