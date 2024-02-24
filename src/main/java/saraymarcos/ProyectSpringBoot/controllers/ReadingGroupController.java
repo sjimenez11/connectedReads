@@ -30,7 +30,7 @@ public class ReadingGroupController {
         );
     }
 
-    @GetMapping("/by-nombre/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<List<ReadingGroupResponseDto>> getReadingGroupsByNombre(
             @PathVariable String name
     ){
@@ -47,7 +47,7 @@ public class ReadingGroupController {
         );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<ReadingGroupResponseDto> putReadingGroup(
             @PathVariable Long id,
             @RequestBody ReadingGroupRequestDto readingGroupRequestDto
@@ -58,7 +58,7 @@ public class ReadingGroupController {
         );
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<ReadingGroupResponseDto> deleteReadingGroup(
             @PathVariable Long id
     ){

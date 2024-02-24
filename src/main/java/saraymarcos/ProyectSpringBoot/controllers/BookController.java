@@ -84,18 +84,16 @@ public class BookController {
 
     }
  */
-/*
-    @GetMapping("/{ISBN}")
+    @GetMapping("isbn/{isbn}")
     public ResponseEntity<BookResponseDto> getBookByISBN(
-            @PathVariable String ISBN
+            @PathVariable String isbn
     ) {
         log.info("getBookByISBN");
 
-        return ResponseEntity.ok(BookMapper.toResponse(Bookservice.findBookByISBN(ISBN))
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBookByIsbn(isbn))
         );
     }
-*/
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<BookResponseDto> postBook(
             @RequestBody BookRequestDto bookRequestDto
     ) {
@@ -106,7 +104,7 @@ public class BookController {
         );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<BookResponseDto> putBook(
             @PathVariable Long id,
             @RequestBody BookRequestDto bookRequestDto
@@ -118,7 +116,7 @@ public class BookController {
         );
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<BookResponseDto> deleteBook(
             @PathVariable Long id
     ) {

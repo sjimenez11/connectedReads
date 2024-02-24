@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Libros",
+			"name": "Books",
 			"item": [
 				{
 					"name": "Get all",
@@ -25,16 +25,26 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDY1MzF9.KAn8yYuENA7ewCfAjOAE2Heq-rH2oObjSN-bcP7M0rqOoASvu33pBrJcpaLeMWaI4op57cZ8uX-8k1jHzRS0zg",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros",
+							"raw": "{{base_url}}/connectedReads/books",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros"
+								"books"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -58,11 +68,21 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwODk0NTYxN30.9TWlCKxsNYPRmbjzI8vZqTGqSQRFcuZ4cTtqyHFmO38yEviMA_p2tcmWDiNT_fcgG-dcnqf0iZv81zddlRP9-w",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ISBN\": 9999999999,\n    \"titulo\": \"Me muero\",\n    \"autor\": \"me requetemuero\",\n    \"precio\": 99,\n    \"genero\": \"morirse\",\n    \"sinopsis\": \"como que te mueres\",\n    \"stock\": 99\n}",
+							"raw": "{\n\t\"isbn\": 9999999999,\n    \"title\": \"Me muero\",\n    \"author\": \"me requetemuero\",\n    \"price\": 99,\n    \"genre\": \"morirse\",\n    \"synopsis\": \"como que te mueres\",\n    \"stock\": 99\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,13 +90,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/create",
+							"raw": "{{base_url}}/connectedReads/books/create",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
+								"books",
 								"create"
 							]
 						},
@@ -101,11 +121,21 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDQ0NDB9.P8pt-E68HC27EbIlHcdij4IXsfytxMZ8jW7HwIQWJmm6Mai8MlxezHS6ZE_FVQ0IuE6YgyTMAd7p-IjAxL6bcw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"titulo\": \"Babel, o la necesidad de la violencia\"\n}",
+							"raw": "{\n        \"isbn\": \"8417854312\",\n        \"title\": \"De hemoglobina y polvo\",\n        \"author\": \"Jennifer L. Armentrout\",\n        \"price\": 18.95,\n        \"genre\": \"Fantasía romántica\",\n        \"synopsis\": \"UNA DONCELLA. Elegida desde su nacimiento para dar comienzo a una nueva era, la vida de Poppy nunca le ha pertenecido. La vida de la Doncella es solitaria. Jamás la tocarán. Jamás la mirarán. Jamás le hablarán. Jamás sentirá placer.\",\n        \"stock\": 33\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -113,13 +143,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/update/{{id}}",
+							"raw": "{{base_url}}/connectedReads/books/update/{{id}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
+								"books",
 								"update",
 								"{{id}}"
 							]
@@ -145,6 +175,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDQ0NDB9.P8pt-E68HC27EbIlHcdij4IXsfytxMZ8jW7HwIQWJmm6Mai8MlxezHS6ZE_FVQ0IuE6YgyTMAd7p-IjAxL6bcw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -157,13 +197,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/delete/{{id}}",
+							"raw": "{{base_url}}/connectedReads/books/delete/{{id}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
+								"books",
 								"delete",
 								"{{id}}"
 							]
@@ -180,7 +220,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwNzc3Nzc1NX0.dn4cZKNOb145cuK4vRFXe-FdiRS5ElEeCWghmv1v8si5XI9OP2BI4_zXL_Xwqyf7NLHdedlxjKD9gVs8oEiaWw",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDY2ODd9.7G-uwymmzPqrfNsmJvOOEfvBF2YBMcf4aOOxFzCNlMvsebUsK6AfI_Hypty2ju6k7onsHXd1gwG6v9SwwulKQw",
 									"type": "string"
 								}
 							]
@@ -188,13 +228,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/id/{{id}}",
+							"raw": "{{base_url}}/connectedReads/books/id/{{id}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
+								"books",
 								"id",
 								"{{id}}"
 							]
@@ -222,19 +262,29 @@
 					"response": []
 				},
 				{
-					"name": "Get by ISBN",
+					"name": "Get by Isbn",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDM2NzJ9.NL6wfO42cNtjtzr1Xr72bPsb5-7bKEiNKcmhJAXR5Hidn3gUOXqeZ-CxeSd9hM8GIHGVxqTsPClpADSFoRQzgQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/ISBN/8419266906",
+							"raw": "{{base_url}}/connectedReads/books/isbn/8419266906",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
-								"ISBN",
+								"books",
+								"isbn",
 								"8419266906"
 							]
 						}
@@ -242,39 +292,59 @@
 					"response": []
 				},
 				{
-					"name": "Get by Autor",
+					"name": "Get by Author",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDM2NzJ9.NL6wfO42cNtjtzr1Xr72bPsb5-7bKEiNKcmhJAXR5Hidn3gUOXqeZ-CxeSd9hM8GIHGVxqTsPClpADSFoRQzgQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/autor/Rebeca F. Kuang",
+							"raw": "{{base_url}}/connectedReads/books/author/Rebecca F. Kuang",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
-								"autor",
-								"Rebeca F. Kuang"
+								"books",
+								"author",
+								"Rebecca F. Kuang"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get by Titulo",
+					"name": "Get by Title",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDM2NzJ9.NL6wfO42cNtjtzr1Xr72bPsb5-7bKEiNKcmhJAXR5Hidn3gUOXqeZ-CxeSd9hM8GIHGVxqTsPClpADSFoRQzgQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/titulo/Babel",
+							"raw": "{{base_url}}/connectedReads/books/title/Babel",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
-								"titulo",
+								"books",
+								"title",
 								"Babel"
 							]
 						}
@@ -282,19 +352,29 @@
 					"response": []
 				},
 				{
-					"name": "Get by Genero",
+					"name": "Get by Genre",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDM2NzJ9.NL6wfO42cNtjtzr1Xr72bPsb5-7bKEiNKcmhJAXR5Hidn3gUOXqeZ-CxeSd9hM8GIHGVxqTsPClpADSFoRQzgQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/genero/Narrativa Fantástica",
+							"raw": "{{base_url}}/connectedReads/books/genre/Narrativa Fantástica",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
-								"genero",
+								"books",
+								"genre",
 								"Narrativa Fantástica"
 							]
 						}
@@ -304,7 +384,7 @@
 			]
 		},
 		{
-			"name": "Usuarios",
+			"name": "Users",
 			"item": [
 				{
 					"name": "Create",
@@ -335,7 +415,7 @@
 					"response": []
 				},
 				{
-					"name": "Register",
+					"name": "Register User",
 					"event": [
 						{
 							"listen": "test",
@@ -378,7 +458,35 @@
 					"response": []
 				},
 				{
-					"name": "LogIn",
+					"name": "LogIn Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@connectedReads.com\",\r\n    \"password\":\"admin1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn User",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -426,7 +534,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwODk0Njk3M30.Dpy9nanfjPURgeUXFmGpB6gd4BbfoAbxbcyQma3SKH3KhPMjhVhhycBKWq9hEdq4NHqPuRXslpKhsT9tLAjJTQ",
 									"type": "string"
 								}
 							]
@@ -455,7 +563,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwNzc3Nzc1NX0.dn4cZKNOb145cuK4vRFXe-FdiRS5ElEeCWghmv1v8si5XI9OP2BI4_zXL_Xwqyf7NLHdedlxjKD9gVs8oEiaWw",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwODk0NjY1OH0.4tcFvkYTRM_JRoFp-drclfB2CqVtdf8vM70G7f-PlDpRfZ8fAqjl-lVo6GjeJDs9QOdnnj8IlcYPPIOC2viodQ",
 									"type": "string"
 								}
 							]
@@ -485,7 +593,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwNzc3Nzc1NX0.dn4cZKNOb145cuK4vRFXe-FdiRS5ElEeCWghmv1v8si5XI9OP2BI4_zXL_Xwqyf7NLHdedlxjKD9gVs8oEiaWw",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwODk0Njg0OH0.JRaGiAShLWWk4OAhvdKRAXc-QQRmvFv93nbSFPHDjm0UaAk4dR6d58QxhreaHrBoJsjfFVaDHTvy3kc9UwQG2Q",
 									"type": "string"
 								}
 							]
@@ -529,7 +637,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDc3ODA3NDZ9.a3cytm6w9Y1qZm358LlgIBBZ-BWEmh9qy9cDr1ZrqcF1xqPE3J3dM1EAjWZmc_rrlGWG8JITbSnLYYnocxzi-g",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDM2NzJ9.NL6wfO42cNtjtzr1Xr72bPsb5-7bKEiNKcmhJAXR5Hidn3gUOXqeZ-CxeSd9hM8GIHGVxqTsPClpADSFoRQzgQ",
 									"type": "string"
 								}
 							]
@@ -582,7 +690,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDc3ODAyNDB9.dFmiLU7mh9tysGQRHH0KBJSIfPTcu89LoeVvUihwJzP_H7vMYGvcUqcIEaz9PtTL2Dt39Wn5C8cqdRxl-33R3A",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDM2NzJ9.NL6wfO42cNtjtzr1Xr72bPsb5-7bKEiNKcmhJAXR5Hidn3gUOXqeZ-CxeSd9hM8GIHGVxqTsPClpADSFoRQzgQ",
 									"type": "string"
 								}
 							]
@@ -631,6 +739,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDc3Nzk4NjF9.S_SjofNc-2fLsRlYjmQfr56mRIZ_MpnY-03JG_l8-6WmGt5tPt31f9xD2q_f4wNdfccaGzenSC1d5co4HtdfnQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -643,17 +761,276 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/connectedReads/libros/delete{{id}}",
+							"raw": "{{base_url}}/connectedReads/users/delete/admin@connectedReads.com",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"connectedReads",
-								"libros",
-								"delete{{id}}"
+								"users",
+								"delete",
+								"admin@connectedReads.com"
 							]
 						},
 						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reading Group",
+			"item": [
+				{
+					"name": "Get all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDUwNjB9.CMv_LFv54IUjGRWaWNf_Iiqk23Z4ciR_CVAuHqJgFTk6VPiGzBpnZSTOt2audQ6OGcGb8XSBmwyUPvkfuLk9eA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/readingGroups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"readingGroups"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJhZG1pbkBjb25uZWN0ZWRSZWFkcy5jb20iLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJDb25uZWN0ZWRSZWFkcyIsImV4cCI6MTcwODk0NTYxN30.9TWlCKxsNYPRmbjzI8vZqTGqSQRFcuZ4cTtqyHFmO38yEviMA_p2tcmWDiNT_fcgG-dcnqf0iZv81zddlRP9-w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"isbn\": 9999999999,\n    \"title\": \"Me muero\",\n    \"author\": \"me requetemuero\",\n    \"price\": 99,\n    \"genre\": \"morirse\",\n    \"synopsis\": \"como que te mueres\",\n    \"stock\": 99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/books/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"books",
+								"create"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDQ0NDB9.P8pt-E68HC27EbIlHcdij4IXsfytxMZ8jW7HwIQWJmm6Mai8MlxezHS6ZE_FVQ0IuE6YgyTMAd7p-IjAxL6bcw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"isbn\": \"8417854312\",\n        \"title\": \"De hemoglobina y polvo\",\n        \"author\": \"Jennifer L. Armentrout\",\n        \"price\": 18.95,\n        \"genre\": \"Fantasía romántica\",\n        \"synopsis\": \"UNA DONCELLA. Elegida desde su nacimiento para dar comienzo a una nueva era, la vida de Poppy nunca le ha pertenecido. La vida de la Doncella es solitaria. Jamás la tocarán. Jamás la mirarán. Jamás le hablarán. Jamás sentirá placer.\",\n        \"stock\": 33\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/books/update/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"books",
+								"update",
+								"{{id}}"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/connectedReads/books/delete/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"books",
+								"delete",
+								"{{id}}"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDY2ODd9.7G-uwymmzPqrfNsmJvOOEfvBF2YBMcf4aOOxFzCNlMvsebUsK6AfI_Hypty2ju6k7onsHXd1gwG6v9SwwulKQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/books/id/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"books",
+								"id",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ1c2VyQGNvbm5lY3RlZFJlYWRzLmNvbSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiQ29ubmVjdGVkUmVhZHMiLCJleHAiOjE3MDg5NDM2NzJ9.NL6wfO42cNtjtzr1Xr72bPsb5-7bKEiNKcmhJAXR5Hidn3gUOXqeZ-CxeSd9hM8GIHGVxqTsPClpADSFoRQzgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/connectedReads/books/author/Rebecca F. Kuang",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"connectedReads",
+								"books",
+								"author",
+								"Rebecca F. Kuang"
+							]
+						}
 					},
 					"response": []
 				}

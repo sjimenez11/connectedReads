@@ -47,29 +47,54 @@ public class SecurityConfiguration {
                                 .requestMatchers("/error/**").permitAll()
                                 // login / register
                                 .requestMatchers(
+                                    // Users
+                                        // POST
                                         mvc.pattern("/connectedReads/users/create"),
                                         mvc.pattern("/connectedReads/users/register"),
-                                        mvc.pattern("/connectedReads/users/login"),
-                                        mvc.pattern("/connectedReads/libros")
+                                        mvc.pattern("/connectedReads/users/login")
                                         ).permitAll()
 
                                 .requestMatchers(
-                                        "/connectedReads/libros/id/{id}",
-                                        "/connectedReads/libros/uuid/{uuid}",
-                                        "/connectedReads/libros/ISBN/{ISBN}",
-                                        "/connectedReads/libros/autor/{autor}",
-                                        "/connectedReads/libros/titulo/{titulo}",
-                                        "/connectedReads/libros/genero/{genero}",
-
+                                    // Users
+                                        // PUT and DELETE
                                         "/connectedReads/users/update/me",
                                         "/connectedReads/users/update",
-                                        "/connectedReads/users/delete/{email}"
-                                ).hasAnyRole("USER")
+                                        "/connectedReads/users/delete/{email}",
+
+                                    // Books
+                                        // GET
+                                        "/connectedReads/books",
+                                        "/connectedReads/books/id/{id}",
+                                        "/connectedReads/books/isbn/{isbn}",
+                                        "/connectedReads/books/author/{author}",
+                                        "/connectedReads/books/title/{title}",
+                                        "/connectedReads/books/genre/{genre}",
+                                        // POST, PUT and DELETE
+                                        //"/connectedReads/books/create",
+                                        //"/connectedReads/books/update/{id}",
+                                        //"/connectedReads/books/delete/{id}"
+
+                                    // Reading Groups
+                                        // GET
+                                        "/connectedReads/readingGroups",
+                                        // POST, PUT and DELETE
+                                        "/connectedReads/readingGroups/name/{name}"
+
+
+                                        ).hasAnyRole("USER", "ADMIN")
 
                                 .requestMatchers(
-                                        "/connectedReads/libros/create",
-                                        "/connectedReads/libros/update/{id}",
-                                        "/connectedReads/libros/delete/{id}"
+                                    // Users
+                                        // GET
+                                        "/connectedReads/users",
+                                        "/connectedReads/users/id/{id}",
+                                        "/connectedReads/users/email/{email}",
+
+                                    // Books
+                                        // POST, PUT and DELETE
+                                        "/connectedReads/books/create",
+                                        "/connectedReads/books/update/{id}",
+                                        "/connectedReads/books/delete/{id}"
                                 ).hasAnyRole("ADMIN")
 
                                 .anyRequest().authenticated()

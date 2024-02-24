@@ -4,10 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import saraymarcos.ProyectSpringBoot.models.Book;
-import saraymarcos.ProyectSpringBoot.repository.BookRepository;
+import saraymarcos.ProyectSpringBoot.repositories.BookRepository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Slf4j
@@ -35,10 +34,10 @@ public class BookServiceImpl implements BookService {
 //        return bookRepository.findLibroByUuid(uuid).orElseThrow();
 //    }
 
-//    @Override
-//    public Book findLibroByISBN(String isbn) {
-//        return bookRepository.findLibroByISBN(isbn);
-//    }
+    @Override
+    public Book findBookByIsbn(String isbn) {
+        return bookRepository.findBookByIsbnContainsIgnoreCase(isbn);
+    }
 
 
     @Override
@@ -48,8 +47,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> findBooksByTitle(String title) {
-        return null;
-        //return libroRepository.findLibrosByTituloContainsIgnoreCase(titulo);
+        return bookRepository.findBooksByTitleContainsIgnoreCase(title);
     }
 
     @Override

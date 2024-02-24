@@ -10,7 +10,8 @@ import java.util.UUID;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-//    Book findLibroByISBN(String isbn);
+    Book findBookByIsbnContainsIgnoreCase(String isbn);
     List<Book> findBooksByAuthorContainsIgnoreCase(String author);
     List<Book> findBooksByGenreContainsIgnoreCase(String genre);
+    List<Book> findBooksByTitleContainsIgnoreCase(String title);
 }

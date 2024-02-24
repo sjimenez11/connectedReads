@@ -11,7 +11,7 @@ public interface BookService{
     List<Book> findAll();
     Book findById(Long id);
 //    Book findByUuid(UUID uuid);
-//    Book findBooksByIsbn(String isbn);
+    Book findBookByIsbn(String isbn);
     List<Book> findBooksByGenre(String genre);
     List<Book> findBooksByTitle(String title);
     List<Book> findBooksByAuthor(String author);
