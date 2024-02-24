@@ -4,14 +4,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import saraymarcos.ProyectSpringBoot.models.Book;
-import saraymarcos.ProyectSpringBoot.repository.BookRepository;
+import saraymarcos.ProyectSpringBoot.repositories.BookRepository;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
 @Slf4j
-public class BookServiceImpl implements BookService {
+  public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
 
