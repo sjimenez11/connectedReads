@@ -47,6 +47,14 @@ public class ReadingGroupController {
         return ResponseEntity.ok(readingGroupMapper.toResponse(readingGroupService.findReadingGroupsByName(name)));
     }
 
+    @GetMapping("/name2/{name}")
+    public ResponseEntity<List<ReadingGroupResponseDto>> getReadingGroupsByName2(
+            @PathVariable String name
+    ){
+        log.info("getReadingGroupsByName");
+        return ResponseEntity.ok(readingGroupMapper.toResponse(readingGroupService.findReadingGroupsByNameContainsIgnoreCase(name)));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<ReadingGroupResponseDto> postReadingGroup(
             @RequestBody ReadingGroupRequestDto readingGroupRequestDto

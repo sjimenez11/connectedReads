@@ -5,13 +5,20 @@ import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 import saraymarcos.ProyectSpringBoot.dtos.user.UserDtoCreate;
 import saraymarcos.ProyectSpringBoot.models.Book;
+import saraymarcos.ProyectSpringBoot.models.Library;
+import saraymarcos.ProyectSpringBoot.models.ReadingGroup;
 import saraymarcos.ProyectSpringBoot.models.Role;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 @Service
+@RequiredArgsConstructor
 public class DataInsertionService {
+
+    private final BookService bookService;
 
     Faker faker = new Faker(new Locale("en-US"));
 
@@ -57,6 +64,36 @@ public class DataInsertionService {
                     LocalDateTime.now()
             );
             bookService.save(book);
+        }
+    }
+
+    public void createFakeReadingGroups(ReadingGroupService readingGroupService, int number){
+        if (number <= 0) return;
+        for(int i = 0; i < number; i++){
+            ReadingGroup readingGroup = new ReadingGroup(
+                    null,
+                    faker.lorem().sentence(1, 5),
+                    faker.lorem().sentence(10, 10),
+                    faker.lorem().sentence(1, 2)
+            );
+            readingGroupService.save(readingGroup);
+        }
+    }
+
+    public void createFakeLibraries(LibraryService libraryService, int number){
+        if (number <= 0) return;
+        //long id = 1;
+        //List<Book> books = Collections.singletonList(bookService.findById(id));
+        List<Book> books = bookService.findAll();
+
+        for(int i = 0; i < number; i++){
+            int bookIndex = faker.number().numberBetween(0, books.size());
+            //Book book = books.get(bookIndex);
+            Library library = new Library(
+                    null,
+                    books
+            );
+            libraryService.save(library);
         }
     }
 
