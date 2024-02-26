@@ -13,9 +13,10 @@ public class ProyectSpringBootApplication {
 	public CommandLineRunner init(InitialDataCreationService service) {
 		return args -> {
 			service.createDefaultAdminUser();
-			service.createFakeBooks(20);
+			service.createFakeBooks(40);
 		};
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectSpringBootApplication.class, args);
 	}

@@ -17,7 +17,7 @@ import java.util.Locale;
 public class InitialDataCreationService {
     private final BookService bookService;
     private final UserService userService;
-    private final Faker faker = new Faker(new Locale("en-US"));
+    private final Faker faker = new Faker(new Locale("es-ES"));
 
     public void createDefaultAdminUser(){
         UserDtoCreate user = new UserDtoCreate("user", "user", Role.ADMIN);
@@ -32,7 +32,7 @@ public class InitialDataCreationService {
                     generateRandomIsbn(),
                     faker.book().title(),
                     faker.book().author(),
-                    (double) (Math.round((10 + Math.random() * 21) * 100) / 100), //Entre 10 y 30€ con dos decimales
+                    Math.round((10 + Math.random() * 21) * 100.0) / 100.0, //Entre 10 y 30€ con dos decimales
                     faker.book().genre(),
                     //como no hay un faker que cree una synopsis, hemos creado un método que contenga varias y ponga una aleatoriamente (random)
                     generateRandomSynopsis(),
