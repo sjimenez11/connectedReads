@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -18,6 +20,8 @@ public class ReadingGroup {
     private String name;
     private String description;
     private String genre;
+    @ManyToMany
+    private List<User> users;
 
     //TODO: añadir idUsuarioCreador
     //TODO: cambiar el genero a List

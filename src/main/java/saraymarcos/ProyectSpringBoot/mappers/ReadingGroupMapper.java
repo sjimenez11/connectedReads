@@ -14,7 +14,8 @@ public class ReadingGroupMapper {
                 readingGroup.getId(),
                 readingGroup.getName(),
                 readingGroup.getDescription(),
-                readingGroup.getGenre()
+                readingGroup.getGenre(),
+                readingGroup.getUsers()
         );
     }
 
@@ -29,7 +30,8 @@ public class ReadingGroupMapper {
                 0L,
                 readingGroupRequestDto.getName(),
                 readingGroupRequestDto.getDescription(),
-                readingGroupRequestDto.getGenre()
+                readingGroupRequestDto.getGenre(),
+                readingGroupRequestDto.getUsers()
         );
     }
 }

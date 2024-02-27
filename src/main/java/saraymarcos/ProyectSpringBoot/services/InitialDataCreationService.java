@@ -104,19 +104,6 @@ public class InitialDataCreationService {
         return possibleSynopsis[randomIndex];
     }
 
-    public void createFakeReadingGroups(int number){
-        if (number <= 0) return;
-        for(int i = 0; i < number; i++){
-            ReadingGroup readingGroup = new ReadingGroup(
-                    null,
-                    faker.lorem().sentence(1, 5),
-                    faker.lorem().sentence(10, 10),
-                    faker.lorem().sentence(1, 2)
-            );
-            readingGroupService.save(readingGroup);
-        }
-    }
-
     public void createFakeLibraries(int number){
         if (number <= 0) return;
         List<Book> books = bookService.findAll();
@@ -124,8 +111,8 @@ public class InitialDataCreationService {
         for(int i = 0; i < number; i++){
             Library library = new Library(
                     null,
-                    books
-            );
+                    books.subList(0, faker.number().numberBetween(0, 40))
+                    );
             libraryService.save(library);
         }
     }
@@ -153,6 +140,21 @@ public class InitialDataCreationService {
                     library
             );
             userService.create(user);
+        }
+    }
+
+    public void createFakeReadingGroups(int number){
+        if (number <= 0) return;
+        List<User> users = userService.findAllUsers();
+        for(int i = 0; i < number; i++){
+            ReadingGroup readingGroup = new ReadingGroup(
+                    null,
+                    faker.lorem().sentence(1, 5),
+                    faker.lorem().sentence(10, 10),
+                    faker.lorem().sentence(1, 2),
+                    users.subList(0, faker.number().numberBetween(0, 9))
+                    );
+            readingGroupService.save(readingGroup);
         }
     }
 
