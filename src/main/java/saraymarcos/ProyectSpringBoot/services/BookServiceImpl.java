@@ -66,6 +66,13 @@ import java.util.List;
     }
 
     @Override
+    public Book setClassification(Long id, String classification) {
+        Book book = this.findById(id);
+        book.setClassification(classification);
+        return bookRepository.save(book);
+    }
+
+    @Override
     public void deleteById(Long id) {
         bookRepository.deleteById(id);
     }

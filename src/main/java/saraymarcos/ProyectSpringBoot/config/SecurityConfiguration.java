@@ -75,6 +75,8 @@ public class SecurityConfiguration {
                                         //"/connectedReads/books/create",
                                         //"/connectedReads/books/update/{id}",
                                         //"/connectedReads/books/delete/{id}"
+                                        // PATCH
+                                        "/connectedReads/books/setClassification/{id}",
 
                                     // Reading Groups
                                         // GET

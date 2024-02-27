@@ -96,6 +96,15 @@ public class BookController {
         return ResponseEntity.ok(bookMapper.toResponse(bookService.findBookByIsbn(isbn)));
     }
 
+    @PatchMapping("/setClassification/{id}")
+    public ResponseEntity<BookResponseDto> setBookClassification(
+        @PathVariable Long id,
+                @RequestParam String classification
+    ) {
+        log.info("setBooKClassification");
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.setClassification(id, classification)));
+    }
+
 
     @PostMapping("/create")
     public ResponseEntity<BookResponseDto> postBook(
