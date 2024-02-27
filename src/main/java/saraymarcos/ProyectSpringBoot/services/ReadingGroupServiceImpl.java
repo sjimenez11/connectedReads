@@ -34,6 +34,11 @@ public class ReadingGroupServiceImpl implements ReadingGroupService {
     }
 
     @Override
+    public List<ReadingGroup> findReadingGroupsByNameContainsIgnoreCase(String name) {
+        return readingGroupRepository.findReadingGroupsByNameContainsIgnoreCase(name);
+    }
+
+    @Override
     public void deleteById(Long id) {
         readingGroupRepository.deleteById(id);
     }
