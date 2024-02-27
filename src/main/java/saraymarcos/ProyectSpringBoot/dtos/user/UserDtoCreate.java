@@ -1,5 +1,6 @@
 package saraymarcos.ProyectSpringBoot.dtos.user;
 
+import saraymarcos.ProyectSpringBoot.models.Library;
 import saraymarcos.ProyectSpringBoot.models.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,4 +13,5 @@ public class UserDtoCreate {
     private String email;
     private String password;
     private Role role;
+    private Library library;
 }

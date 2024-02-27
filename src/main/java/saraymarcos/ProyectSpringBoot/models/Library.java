@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import saraymarcos.ProyectSpringBoot.dtos.user.UserDto;
 
 
 import java.util.List;
@@ -18,4 +19,6 @@ public class Library {
     private Long id;
     @ManyToMany
     private List<Book> books;
+    @OneToOne
+    private User user;
 }

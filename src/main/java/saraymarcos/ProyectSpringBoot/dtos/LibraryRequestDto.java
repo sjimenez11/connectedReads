@@ -10,4 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 public class LibraryRequestDto {
     private final List<Book> books;
+    private final Long userId;
 }

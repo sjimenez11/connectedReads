@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,6 +27,8 @@ public class Book {
     private String synopsis;
     private String classification;
     private Long stock;
+    @ManyToMany
+    private List<Library> libraries;
     @CreatedDate
     private LocalDateTime createdAt;
     @LastModifiedDate

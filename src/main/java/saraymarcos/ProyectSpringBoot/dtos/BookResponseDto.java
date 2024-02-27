@@ -2,8 +2,10 @@ package saraymarcos.ProyectSpringBoot.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import saraymarcos.ProyectSpringBoot.models.Library;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -19,6 +21,7 @@ public class BookResponseDto {
     private String synopsis;
     private String classification;
     private Long stock;
+    private List<Library> libraries;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

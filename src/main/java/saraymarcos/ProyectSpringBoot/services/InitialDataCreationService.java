@@ -4,6 +4,7 @@ package saraymarcos.ProyectSpringBoot.services;
 import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
+import saraymarcos.ProyectSpringBoot.dtos.user.UserDto;
 import saraymarcos.ProyectSpringBoot.dtos.user.UserDtoCreate;
 import saraymarcos.ProyectSpringBoot.models.*;
 
@@ -22,20 +23,25 @@ public class InitialDataCreationService {
 
     public void createFakeUsers(int amount) {
         if (amount <= 0) return;
+        List<Library> libraries = libraryService.findAll();
         // One admin
         UserDtoCreate admin = new UserDtoCreate(
                 "user",
                 "user",
-                Role.ADMIN
+                Role.ADMIN,
+                null
         );
         userService.create(admin);
 
         // n-1 users
         for (int i = 0; i < amount-1; i++) {
+            int libraryIndex = faker.number().numberBetween(0, libraries.size());
+            //Library library = libraries.get(libraryIndex);
             UserDtoCreate user = new UserDtoCreate(
                     faker.internet().safeEmailAddress(),
                     faker.internet().password(),
-                    Role.USER
+                    Role.USER,
+                    null
             );
             userService.create(user);
         }
@@ -43,6 +49,7 @@ public class InitialDataCreationService {
 
     public void createFakeBooks(int number){
         if(number <= 0) return;
+        List<Library> libraries = libraryService.findAll();
         for(int i = 0; i < number; i++){
             Book book = new Book(
                     null,
@@ -55,6 +62,7 @@ public class InitialDataCreationService {
                     generateRandomSynopsis(),
                     generateRandomClassification(),
                     (long) (Math.random() * 101),
+                    libraries,
                     LocalDateTime.now(),
                     LocalDateTime.now()
             );
@@ -64,6 +72,7 @@ public class InitialDataCreationService {
 
     public void createFakeBooks2(BookService bookService, int number){
         if(number <= 0) return;
+        List<Library> libraries = libraryService.findAll();
         for(int i = 0; i < number; i++){
             Book book = new Book(
                     null,
@@ -80,6 +89,7 @@ public class InitialDataCreationService {
                     faker.lorem().sentence(1, 2),
                     //(long) (Math.random() * 101),
                     (long) faker.number().numberBetween(0, 100),
+                    libraries,
                     LocalDateTime.now(),
                     LocalDateTime.now()
             );
@@ -133,16 +143,16 @@ public class InitialDataCreationService {
 
     public void createFakeLibraries(int number){
         if (number <= 0) return;
-        //long id = 1;
-        //List<Book> books = Collections.singletonList(bookService.findById(id));
         List<Book> books = bookService.findAll();
+        List<User> users = userService.findAllUsers();
 
         for(int i = 0; i < number; i++){
-            int bookIndex = faker.number().numberBetween(0, books.size());
-            //Book book = books.get(bookIndex);
+            int userIndex = faker.number().numberBetween(0, users.size());
+            User user = users.get(userIndex);
             Library library = new Library(
                     null,
-                    books
+                    books,
+                    user
             );
             libraryService.save(library);
         }

@@ -2,6 +2,9 @@ package saraymarcos.ProyectSpringBoot.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import saraymarcos.ProyectSpringBoot.models.Library;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,4 +18,5 @@ public class BookRequestDto {
     private final String synopsis;
     private final String classification;
     private final Long stock;
+    private final List<Library> libraries;
 }

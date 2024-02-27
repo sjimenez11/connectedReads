@@ -52,7 +52,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.USER));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.USER, null));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -66,7 +66,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole()));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole(), dto.getLibrary()));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -75,6 +75,9 @@ public class UserService implements UserDetailsService {
 
     public List<UserDto> findAll() {
         return mapper.toDto(repository.findAll());
+    }
+    public List<User> findAllUsers() {
+        return repository.findAll();
     }
 
     public List<UserDto> findUsersByRole(Role role) {
@@ -109,7 +112,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(dto.getNewPassword()), user.getRole()));
+                encoder.encode(dto.getNewPassword()), user.getRole(), user.getLibrary()));
         return mapper.toDto(saved);
     }
 
@@ -124,7 +127,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(dto.getNewPassword()), user.getRole()));
+                encoder.encode(dto.getNewPassword()), user.getRole(), user.getLibrary()));
         return mapper.toDto(saved);
     }
 
