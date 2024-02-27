@@ -21,31 +21,7 @@ public class InitialDataCreationService {
     private final LibraryService libraryService;
     private final Faker faker = new Faker(new Locale("es-ES"));
 
-    public void createFakeUsers(int amount) {
-        if (amount <= 0) return;
-        List<Library> libraries = libraryService.findAll();
-        // One admin
-        UserDtoCreate admin = new UserDtoCreate(
-                "user",
-                "user",
-                Role.ADMIN,
-                null
-        );
-        userService.create(admin);
 
-        // n-1 users
-        for (int i = 0; i < amount-1; i++) {
-            int libraryIndex = faker.number().numberBetween(0, libraries.size());
-            //Library library = libraries.get(libraryIndex);
-            UserDtoCreate user = new UserDtoCreate(
-                    faker.internet().safeEmailAddress(),
-                    faker.internet().password(),
-                    Role.USER,
-                    null
-            );
-            userService.create(user);
-        }
-    }
 
     public void createFakeBooks(int number){
         if(number <= 0) return;
@@ -144,19 +120,40 @@ public class InitialDataCreationService {
     public void createFakeLibraries(int number){
         if (number <= 0) return;
         List<Book> books = bookService.findAll();
-        List<User> users = userService.findAllUsers();
 
         for(int i = 0; i < number; i++){
-            int userIndex = faker.number().numberBetween(0, users.size());
-            User user = users.get(userIndex);
             Library library = new Library(
                     null,
-                    books,
-                    user
+                    books
             );
             libraryService.save(library);
         }
     }
+    public void createFakeUsers(int amount) {
+        if (amount <= 0) return;
+        List<Library> libraries = libraryService.findAll();
+        Library library = libraries.get(0);
 
+        // One admin
+        UserDtoCreate admin = new UserDtoCreate(
+                "user",
+                "user",
+                Role.ADMIN,
+                library
+        );
+        userService.create(admin);
+
+        // n-1 users
+        for (int i = 0; i < amount-1; i++) {
+            library = libraries.get(i+1);
+            UserDtoCreate user = new UserDtoCreate(
+                    faker.internet().safeEmailAddress(),
+                    faker.internet().password(),
+                    Role.USER,
+                    library
+            );
+            userService.create(user);
+        }
+    }
 
 }

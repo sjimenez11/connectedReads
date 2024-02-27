@@ -19,6 +19,4 @@ public class Library {
     private Long id;
     @ManyToMany
     private List<Book> books;
-    @OneToOne
-    private User user;
 }

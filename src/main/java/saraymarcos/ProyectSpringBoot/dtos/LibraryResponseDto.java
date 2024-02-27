@@ -12,5 +12,4 @@ import java.util.List;
 public class LibraryResponseDto {
     private Long id;
     private List<Book> books;
-    private User user;
 }

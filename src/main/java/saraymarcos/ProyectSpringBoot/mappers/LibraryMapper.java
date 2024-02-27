@@ -12,18 +12,11 @@ import java.util.List;
 @Component
 public class LibraryMapper {
 
-    private final UserMapper userMapper;
-    @Autowired
-    public LibraryMapper(UserMapper userMapper){
-        this.userMapper = userMapper;
-    }
-
 
     public LibraryResponseDto toResponse(Library library) {
         return new LibraryResponseDto(
                 library.getId(),
-                library.getBooks(),
-                library.getUser()
+                library.getBooks()
         );
     }
 
@@ -37,9 +30,7 @@ public class LibraryMapper {
     public Library toModel(LibraryRequestDto libraryRequestDto) {
         return new Library(
                 0L,
-                libraryRequestDto.getBooks(),
-                libraryRequestDto.getUserId() != null ?
-                        userMapper.toModelfromRequestDto(libraryRequestDto.getUserId()) : null
-                );
+                libraryRequestDto.getBooks()
+        );
     }
 }

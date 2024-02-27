@@ -17,10 +17,10 @@ public class ProyectSpringBootApplication {
 	@Bean
 	public CommandLineRunner init(InitialDataCreationService service) {
 		return args -> {
-			service.createFakeUsers(10);
 			service.createFakeBooks(40);
+			service.createFakeLibraries(10);
+			service.createFakeUsers(10);
 			service.createFakeReadingGroups(5);
-			service.createFakeLibraries(5);
 		};
 	}
 }
