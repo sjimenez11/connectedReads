@@ -107,7 +107,7 @@ public class SecurityConfiguration {
                                         "/connectedReads/readingGroups/update/{id}",
                                         "/connectedReads/readingGroups/delete/{id}"
                                 ).hasAnyRole("ADMIN")
-
+                                // Cualquier otra request con lo que sea (en esta caso autenticación)
                                 .anyRequest().authenticated()
                         //.anyRequest().permitAll()
                 )
