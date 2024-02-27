@@ -43,7 +43,7 @@ public class DataInsertionService {
         }
     }
 
-    public void createFakeBooks(BookService bookService, int number){
+    public void createFakeBooks2(BookService bookService, int number){
         if(number <= 0) return;
         for(int i = 0; i < number; i++){
             Book book = new Book(

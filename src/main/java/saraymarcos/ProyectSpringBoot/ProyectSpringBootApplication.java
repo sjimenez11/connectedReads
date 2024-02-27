@@ -1,5 +1,6 @@
 package saraymarcos.ProyectSpringBoot;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -9,18 +10,12 @@ import saraymarcos.ProyectSpringBoot.services.*;
 @SpringBootApplication
 public class ProyectSpringBootApplication {
 	//JavaFaker
-	@Bean
-	public CommandLineRunner init(InitialDataCreationService service) {
-		return args -> {
-			service.createDefaultAdminUser();
-			service.createFakeBooks(40);
-		};
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectSpringBootApplication.class, args);
 	}
 
+	/*
 	@Bean
 	public CommandLineRunner init(DataInsertionService dataInsertionService, UserService userService, BookService bookService, LibraryService libraryService, ReadingGroupService readingGroupService) {
 		return args -> {
@@ -28,6 +23,16 @@ public class ProyectSpringBootApplication {
 			dataInsertionService.createFakeBooks(bookService, 5);
 			dataInsertionService.createFakeLibraries(libraryService, 5);
 			dataInsertionService.createFakeReadingGroups(readingGroupService, 3);
+		};
+	}
+	*/
+	@Bean
+	public CommandLineRunner init(InitialDataCreationService service) {
+		return args -> {
+			service.createFakeUsers(10);
+			service.createFakeBooks(40);
+			service.createFakeReadingGroups(5);
+			service.createFakeLibraries(5);
 		};
 	}
 }
