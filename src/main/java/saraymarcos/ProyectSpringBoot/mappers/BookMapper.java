@@ -20,6 +20,7 @@ public class BookMapper {
                 book.getPrice(),
                 book.getGenre(),
                 book.getSynopsis(),
+                book.getClassification(),
                 book.getStock(),
                 book.getCreatedAt(),
                 book.getUpdatedAt()
@@ -42,6 +43,7 @@ public class BookMapper {
                 bookRequestDto.getPrice(),
                 bookRequestDto.getGenre(),
                 bookRequestDto.getSynopsis(),
+                bookRequestDto.getClassification(),
                 bookRequestDto.getStock(),
                 LocalDateTime.now(),
                 LocalDateTime.now()

@@ -17,6 +17,7 @@ public class BookResponseDto {
     //portada
     private String genre;
     private String synopsis;
+    private String classification;
     private Long stock;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -69,6 +69,8 @@ public class SecurityConfiguration {
                                         "/connectedReads/books/author/{author}",
                                         "/connectedReads/books/title/{title}",
                                         "/connectedReads/books/genre/{genre}",
+                                        "/connectedReads/books/classification",
+                                        "/connectedReads/books/price",
                                         // POST, PUT and DELETE
                                         //"/connectedReads/books/create",
                                         //"/connectedReads/books/update/{id}",

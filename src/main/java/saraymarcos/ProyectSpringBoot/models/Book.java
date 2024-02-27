@@ -24,6 +24,7 @@ public class Book {
     //portada
     private String genre;
     private String synopsis;
+    private String classification;
     private Long stock;
     @CreatedDate
     private LocalDateTime createdAt;

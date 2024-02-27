@@ -9,23 +9,11 @@ import saraymarcos.ProyectSpringBoot.services.*;
 
 @SpringBootApplication
 public class ProyectSpringBootApplication {
-	//JavaFaker
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectSpringBootApplication.class, args);
 	}
 
-	/*
-	@Bean
-	public CommandLineRunner init(DataInsertionService dataInsertionService, UserService userService, BookService bookService, LibraryService libraryService, ReadingGroupService readingGroupService) {
-		return args -> {
-			dataInsertionService.insertUsers(userService, 5);
-			dataInsertionService.createFakeBooks(bookService, 5);
-			dataInsertionService.createFakeLibraries(libraryService, 5);
-			dataInsertionService.createFakeReadingGroups(readingGroupService, 3);
-		};
-	}
-	*/
 	@Bean
 	public CommandLineRunner init(InitialDataCreationService service) {
 		return args -> {

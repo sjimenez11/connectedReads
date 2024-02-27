@@ -53,6 +53,22 @@ public class BookController {
         return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByAuthor(author)));
     }
 
+    @GetMapping("/classification")
+    public ResponseEntity<List<BookResponseDto>> getBooksByClassification(
+            @RequestParam String classification
+    ) {
+        log.info("getBooksByClassification");
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByClassification(classification)));
+    }
+
+    @GetMapping("/price")
+    public ResponseEntity<List<BookResponseDto>> getBooksByPrice(
+            @RequestParam Double price
+    ) {
+        log.info("getBooksByClassification");
+        return ResponseEntity.ok(bookMapper.toResponse(bookService.findBooksByPriceLessThanEqual(price)));
+    }
+
     @GetMapping("id/{id}")
     public ResponseEntity<BookResponseDto> getBookById(
             @PathVariable Long id

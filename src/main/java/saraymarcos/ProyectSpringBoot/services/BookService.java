@@ -15,6 +15,8 @@ public interface BookService{
     List<Book> findBooksByGenre(String genre);
     List<Book> findBooksByTitle(String title);
     List<Book> findBooksByAuthor(String author);
+    List<Book> findBooksByClassification(String classification);
+    List<Book> findBooksByPriceLessThanEqual(Double price);
     void deleteById(Long id);
     Book save(Book book);
     Book update(Long id, Book book);

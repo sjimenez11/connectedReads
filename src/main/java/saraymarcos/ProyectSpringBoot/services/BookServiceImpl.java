@@ -56,6 +56,16 @@ import java.util.List;
     }
 
     @Override
+    public List<Book> findBooksByClassification(String classification) {
+        return bookRepository.findBooksByClassification(classification);
+    }
+
+    @Override
+    public List<Book> findBooksByPriceLessThanEqual(Double price) {
+        return bookRepository.findBooksByPriceLessThanEqual(price);
+    }
+
+    @Override
     public void deleteById(Long id) {
         bookRepository.deleteById(id);
     }

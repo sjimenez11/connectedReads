@@ -53,6 +53,7 @@ public class InitialDataCreationService {
                     faker.book().genre(),
                     //como no hay un faker que cree una synopsis, hemos creado un método que contenga varias y ponga una aleatoriamente (random)
                     generateRandomSynopsis(),
+                    generateRandomClassification(),
                     (long) (Math.random() * 101),
                     LocalDateTime.now(),
                     LocalDateTime.now()
@@ -76,6 +77,7 @@ public class InitialDataCreationService {
                     //como no hay un faker que cree una synopsis, hemos creado un método que contenga varias y ponga una aleatoriamente (random)
                     //generateRandomSynopsis(),
                     faker.lorem().sentence(10, 10),
+                    faker.lorem().sentence(1, 2),
                     //(long) (Math.random() * 101),
                     (long) faker.number().numberBetween(0, 100),
                     LocalDateTime.now(),
@@ -101,6 +103,16 @@ public class InitialDataCreationService {
                 "Intriga y misterio se entrelazan en esta apasionante novela.",
                 "Una novela que te hará reflexionar sobre la vida y el destino.",
                 "Secretos oscuros acechan en cada esquina de este oscuro thriller."
+        };
+        int randomIndex = (int) (Math.random() * possibleSynopsis.length);
+        return possibleSynopsis[randomIndex];
+    }
+
+    public static String generateRandomClassification(){
+        String[] possibleSynopsis = {
+                "Want to Read",
+                "Currently Reading",
+                "Read"
         };
         int randomIndex = (int) (Math.random() * possibleSynopsis.length);
         return possibleSynopsis[randomIndex];

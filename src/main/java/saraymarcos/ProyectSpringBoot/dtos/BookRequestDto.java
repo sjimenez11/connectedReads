@@ -13,5 +13,6 @@ public class BookRequestDto {
     //portada
     private final String genre;
     private final String synopsis;
+    private final String classification;
     private final Long stock;
 }
